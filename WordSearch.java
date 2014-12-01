@@ -6,6 +6,24 @@ public class WordSearch{
   int right;
   int numWords;
   
+  public ArrayList<String> loadDictionary() {
+	String s = "zzz";
+    	ArrayList<String> dictionary = new ArrayList<String>();
+   	try {
+	FileReader f = new FileReader("wordlist.txt");
+        BufferedReader b = new BufferedReader(f);
+	while( s != null ) {
+	 s = b.readLine();
+	     if ( s != null )
+	     dictionary.add(s);
+	     }
+        }
+   catch (IOException e) {}
+   
+   return dictionary;
+}
+
+
   //Default Constructor
   public WordSearch(){
     grid = new char[10][10];
