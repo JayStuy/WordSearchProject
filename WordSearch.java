@@ -24,7 +24,7 @@ public class WordSearch{
     WordSearch s = new WordSearch();
     for (int i = 0; i < s.grid.length; i++)
 			for (int j = 0; j < s.grid.length; j++)
-				s.grid[i][j] = (char)(j + i * s.grid.length);
+				s.grid[i][j] = 'a';
 		System.out.println(s.toString());
 		//-------------------------------------------------------
   }
