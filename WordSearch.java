@@ -13,7 +13,7 @@ public class WordSearch{
   public WordSearch(int rows, int cols){
     grid = new char[rows][cols];
   }
-  //toString()
+  //toString() --------- Needs to display words in the wordsearch
   public String toString(){
     String a = "";
 		for (int i = 0; i < grid.length; i++) {
