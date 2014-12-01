@@ -4,6 +4,7 @@ public class WordSearch{
   int down;
   int left;
   int right;
+  int numWords;
   
   //Default Constructor
   public WordSearch(){
