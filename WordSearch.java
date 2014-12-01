@@ -1,5 +1,10 @@
 public class WordSearch{
   char[][] grid;
+  int up;
+  int down;
+  int left;
+  int right;
+  
   //Default Constructor
   public WordSearch(){
     grid = new char[10][10];
