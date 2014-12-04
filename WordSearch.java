@@ -1,3 +1,4 @@
+import java.util.*;
 public class WordSearch{
   private char[][] grid;
   private boolean up;
@@ -30,12 +31,18 @@ public class WordSearch{
   //Default Constructor
   public WordSearch(){
     grid = new char[10][10];
+     for (int i = 0; i < s.grid.length; i++)
+			for (int j = 0; j < s.grid[i].length; j++)
+				s.grid[i][j] = '-';
   }
   //Constructor With Parameters
   public WordSearch(int rows, int cols){
     grid = new char[rows][cols];
+     for (int i = 0; i < s.grid.length; i++)
+			for (int j = 0; j < s.grid[i].length; j++)
+				s.grid[i][j] = '-';
   }
-  //toString() --------- Needs to display words in the wordsearch
+  //toString() 
   public String toString(){
     String a = "";
 		for (int i = 0; i < grid.length; i++) {
@@ -47,6 +54,16 @@ public class WordSearch{
 			a+=wordList[i]+"/n";
 		}
 	return a;
+  }
+  //fillGrid()
+  public void fillGrid(){
+  	for (int i = 0; i < grid.length; i++) {
+			for (int j = 0; j < grid[i].length; j++){
+				if (grid[i][j]=='-'){
+					grid[i][j]= (char)rand.nextInt(26)+65;
+				}
+				}
+			}
   }
   //main
   public static void main(String[] args){
