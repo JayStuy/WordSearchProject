@@ -4,6 +4,7 @@ public class WordSearch{
   private boolean down;
   private boolean left;
   private boolean right;
+  private String[] wordList;
   private int numWords;
   
   
@@ -42,7 +43,10 @@ public class WordSearch{
 				a += grid[i][j] + " ";
 			a += "\n";
 		}
-		return a;
+		for (int i = 0; i<a.length; i++){
+			a+=wordList[i]+"/n";
+		}
+	return a;
   }
   //main
   public static void main(String[] args){
