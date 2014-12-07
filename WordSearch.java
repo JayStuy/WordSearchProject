@@ -31,16 +31,16 @@ public class WordSearch{
   //Default Constructor
   public WordSearch(){
     grid = new char[10][10];
-     for (int i = 0; i < s.grid.length; i++)
-			for (int j = 0; j < s.grid[i].length; j++)
-				s.grid[i][j] = '-';
+     for (int i = 0; i < grid.length; i++)
+			for (int j = 0; j < grid[i].length; j++)
+				grid[i][j] = '-';
   }
   //Constructor With Parameters
   public WordSearch(int rows, int cols){
     grid = new char[rows][cols];
-     for (int i = 0; i < s.grid.length; i++)
-			for (int j = 0; j < s.grid[i].length; j++)
-				s.grid[i][j] = '-';
+     for (int i = 0; i < grid.length; i++)
+			for (int j = 0; j < grid[i].length; j++)
+				grid[i][j] = '-';
   }
   //toString() 
   public String toString(){
@@ -60,7 +60,9 @@ public class WordSearch{
   	for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid[i].length; j++){
 				if (grid[i][j]=='-'){
-					grid[i][j]= (char)rand.nextInt(26)+65;
+					Random rand = new Random;
+					int r = rand.nextInt(26)+65;
+					grid[i][j]= (char)r;
 				}
 				}
 			}
