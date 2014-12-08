@@ -63,20 +63,27 @@ public class WordSearch{
 	int r = row, c = col;
 	boolean canAdd;
 	
-	while (c < grid[r].length && grid[r][c] == '-')
-		c ++;
-	if (c < grid[r].length)
+	if (r < 0 || c < 0)
 		canAdd = false;
-	else {
-		canAdd = true;
+	else if(r >= grid.length || c >= grid[r].length)
+		canAdd = false;
+	else{
+		while (c < grid[r].length && grid[r][c] == '-')
+			c ++;
+		if (c < grid[r].length)
+			canAdd = false;
+		else {
+			canAdd = true;
+		}
 	}
 	
 	if (canAdd)
-		for (int i = 0;i < s.length() || i < grid[r].length; i ++)
+		for (int i = 0;i < s.length(); i ++)
 		grid[r][i] = s.charAt(i);
 	
 	return canAdd;
 }
+
 	
   //fillGrid()
   public void fillGrid(){
