@@ -1,3 +1,5 @@
+//Word Search Project of Nick Ramkissoon and Jay Froment-Rudder Period 3
+
 import java.util.*;
 import java.io.*;
 
@@ -61,6 +63,7 @@ public class WordSearch{
   //addWordH
   public boolean addWordH(int row, int col, String s) {
 	int r = row, c = col;
+	s = s.toUpperCase();
 	boolean canAdd;
 	
 	if (r < 0 || c < 0)
@@ -95,6 +98,7 @@ public class WordSearch{
   //addWordV
   public boolean addWordV(int row, int col, String s) {
 	int r = row, c = col;
+	s = s.toUpperCase();
 	boolean canAdd;
 	
 	if (r < 0 || c < 0)
@@ -104,7 +108,7 @@ public class WordSearch{
 	else if(r + s.length() - 1 >= grid.length)
 		canAdd = false;
 	else{
-		while (r < grid.length && (grid[r][c]== '-' || grid[r][c] == s.charAt(r-row))) 
+		while (r < grid.length && (grid[r][c]== '-' || grid[r][c] == s.charAt(r - row))) 
 			r ++;
 		if (r < grid.length)
 			canAdd = false;
@@ -129,6 +133,7 @@ public class WordSearch{
   //addWordD
   public boolean addWordD(int row, int col, String s) {
 	int r = row, c = col;
+	s = s.toUpperCase();
 	boolean canAdd;
 	
 	if (r < 0 || c < 0)
@@ -138,7 +143,19 @@ public class WordSearch{
 	else if(r + s.length() - 1 >= grid.length && c + s.length() - 1 >= grid[r].length)
 		canAdd = false;
 	else{
-		
+		boolean b = false;
+		for (int n = 0; n < s.length(); n ++) {
+			if (grid[r][c] != '-' && grid[r][c] != s.charAt(n)){
+				b = false;
+				n = s.length();
+			}
+			else{
+				r ++;
+				c ++;
+				b = true;
+			}
+		}
+		canAdd = b;
 	}	
 	
 	if (canAdd)
@@ -154,9 +171,22 @@ public class WordSearch{
 		}
 	}
 	return canAdd;
-}
+  }
 
-
+  //addWords
+  public void addWords(int n) {
+	ArrayList<String> Words = new ArrayList();
+	Words = loadDictionary();
+	Random rand = new Random();
+	int m = 0;
+	int l = n;
+	
+	while (l > 0) {
+		wordList.get(m) = Words.remove(rand.nextInt(Words.size()));
+		l --;
+		m ++;
+	}
+  }
 	
   //fillGrid()
   public void fillGrid(){
@@ -164,7 +194,7 @@ public class WordSearch{
 			for (int j = 0; j < grid[i].length; j++){
 				if (grid[i][j]=='-'){
 					Random rand = new Random();
-					int r = rand.nextInt(26)+97;
+					int r = rand.nextInt(26)+65;
 					grid[i][j]= (char)r;
 				}
 				}
