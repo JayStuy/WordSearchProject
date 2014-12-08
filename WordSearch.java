@@ -72,7 +72,7 @@ public class WordSearch{
 	}
 	
 	if (canAdd)
-		for (int i = 0;i < s.length(); i ++)
+		for (int i = 0;i < s.length() || i < grid[r].length; i ++)
 		grid[r][i] = s.charAt(i);
 	
 	return canAdd;
