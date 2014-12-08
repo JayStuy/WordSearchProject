@@ -57,7 +57,7 @@ public class WordSearch{
   }
   
   //addWordH
-  public boolean addWordH(int row. int col, String s) {
+  public boolean addWordH(int row, int col, String s) {
 	int r = row, c = col;
 	boolean canAdd;
 	
