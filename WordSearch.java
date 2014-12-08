@@ -79,7 +79,7 @@ public class WordSearch{
   	for (int i = 0; i < grid.length; i++) {
 			for (int j = 0; j < grid[i].length; j++){
 				if (grid[i][j]=='-'){
-					Random rand = new Random;
+					Random rand = new Random();
 					int r = rand.nextInt(26)+65;
 					grid[i][j]= (char)r;
 				}
