@@ -67,8 +67,10 @@ public class WordSearch{
 		canAdd = false;
 	else if(r >= grid.length || c >= grid[r].length)
 		canAdd = false;
+	else if(c + s.length() - 1 >= grid[r].length)
+		canAdd = false;
 	else{
-		while (c < grid[r].length && grid[r][c] == '-')
+		while (c < grid[r].length && (grid[r][c] == '-' || grid[r][c] == s.charAt(c - col)))
 			c ++;
 		if (c < grid[r].length)
 			canAdd = false;
@@ -78,9 +80,79 @@ public class WordSearch{
 	}
 	
 	if (canAdd)
-		for (int i = 0;i < s.length(); i ++)
-		grid[r][i] = s.charAt(i);
+		for (int i = 0;i < s.length(); i ++) {
+		if(grid[r][col] == '-'){
+			grid[r][col] = s.charAt(i);
+			col ++;
+		}
+		else if(grid[row][c] == s.charAt(i))
+			col ++;
+		}
 	
+	return canAdd;
+}
+
+  //addWordV
+  public boolean addWordV(int row, int col, String s) {
+	int r = row, c = col;
+	boolean canAdd;
+	
+	if (r < 0 || c < 0)
+		canAdd = false;
+	else if(r >= grid.length || c >= grid[r].length)
+		canAdd = false;
+	else if(r + s.length() - 1 >= grid.length)
+		canAdd = false;
+	else{
+		while (r < grid.length && (grid[r][c]== '-' || grid[r][c] == s.charAt(r-row))) 
+			r ++;
+		if (r < grid.length)
+			canAdd = false;
+		else {
+			canAdd = true;
+		}
+	}
+	
+	if (canAdd)
+		for (int i = 0;i < s.length(); i ++) {
+		if(grid[row][c] == '-') {
+			grid[row][c] = s.charAt(i);
+			row ++;
+		}
+		else if(grid[row][c] == s.charAt(i))
+			row++;
+		}
+	
+	return canAdd;
+}
+
+  //addWordD
+  public boolean addWordD(int row, int col, String s) {
+	int r = row, c = col;
+	boolean canAdd;
+	
+	if (r < 0 || c < 0)
+		canAdd = false;
+	else if(r >= grid.length || c >= grid[r].length)
+		canAdd = false;
+	else if(r + s.length() - 1 >= grid.length && c + s.length() - 1 >= grid[r].length)
+		canAdd = false;
+	else{
+		
+	}	
+	
+	if (canAdd)
+		for (int i = 0; i < s.length(); i ++) {
+		if (grid[row][col] == '-') {
+			grid[row][col] = s.charAt(i);
+			row ++;
+			col ++;
+		}
+		else if(grid[row][col] == s.charAt(i)) {
+			row ++;
+			col ++;
+		}
+	}
 	return canAdd;
 }
 
@@ -100,15 +172,6 @@ public class WordSearch{
   }
   //main
   public static void main(String[] args){
-    //toString() Test--------------------------------------
-    /*
-    WordSearch s = new WordSearch();
-    for (int i = 0; i < s.grid.length; i++)
-			for (int j = 0; j < s.grid[i].length; j++)
-				s.grid[i][j] = 'a';
-		System.out.println(s.toString());
-    */
-	//-------------------------------------------------------
 	 WordSearch ws = new WordSearch();
         
         //working horizontal words
@@ -125,7 +188,7 @@ public class WordSearch{
         //horizontal collision checking
         ws.addWordH(5, 3, "plow");
         ws.addWordH(2, 0, "neato");
-        /*
+        
         //working vertical words
         ws.addWordV(1, 0, "nice");
         ws.addWordV(4, 9, "yankee");
@@ -140,7 +203,7 @@ public class WordSearch{
         //vertical collision checking
         ws.addWordV(0, 4, "ores");
         ws.addWordV(4, 9, "goober");
-       
+        
         //working diagonal words
         ws.addWordD(7, 0,  "cat");
         ws.addWordD(0, 0, "home");
@@ -153,9 +216,9 @@ public class WordSearch{
         //Diagonal collision checking
         ws.addWordD(0, 4, "ores");
         ws.addWordD(4, 4, "oats");
-
+		
         System.out.println(ws);
-        */
+        
         ws.fillGrid();
         System.out.println(ws);
   }
