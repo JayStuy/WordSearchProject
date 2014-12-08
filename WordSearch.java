@@ -63,17 +63,19 @@ public class WordSearch{
 	int r = row, c = col;
 	boolean canAdd;
 	
-	while (grid[r][c] == null || c < grid[r].length)
+	while (c < grid[r].length && grid[r][c] == '-')
 		c ++;
-	if (c != grid[r].length)
+	if (c < grid[r].length)
 		canAdd = false;
 	else {
 		canAdd = true;
 	}
 	
 	if (canAdd)
-		for (int i = 0; i < grid[r].length; i ++) 
-			grid[r][i] = s[i];
+		for (int i = 0;i < s.length() || i < grid[r].length; i ++)
+		grid[r][i] = s.charAt(i);
+	
+	return canAdd;
 }
 	
   //fillGrid()
@@ -115,7 +117,7 @@ public class WordSearch{
         //horizontal collision checking
         ws.addWordH(5, 3, "plow");
         ws.addWordH(2, 0, "neato");
-        
+        /*
         //working vertical words
         ws.addWordV(1, 0, "nice");
         ws.addWordV(4, 9, "yankee");
@@ -145,7 +147,7 @@ public class WordSearch{
         ws.addWordD(4, 4, "oats");
 
         System.out.println(ws);
-        
+        */
         ws.fillGrid();
         System.out.println(ws);
   }
