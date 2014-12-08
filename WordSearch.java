@@ -1,4 +1,6 @@
 import java.util.*;
+import java.io.*;
+
 public class WordSearch{
   private char[][] grid;
   private boolean up;
