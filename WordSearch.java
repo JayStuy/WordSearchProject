@@ -84,6 +84,7 @@ public class WordSearch{
 	return canAdd;
 }
 
+
 	
   //fillGrid()
   public void fillGrid(){
@@ -91,7 +92,7 @@ public class WordSearch{
 			for (int j = 0; j < grid[i].length; j++){
 				if (grid[i][j]=='-'){
 					Random rand = new Random();
-					int r = rand.nextInt(26)+65;
+					int r = rand.nextInt(26)+97;
 					grid[i][j]= (char)r;
 				}
 				}
