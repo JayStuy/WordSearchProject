@@ -55,6 +55,25 @@ public class WordSearch{
 		}
 	return a;
   }
+  
+  //addWordH
+  public boolean addWordH(int row. int col, String s) {
+	int r = row, c = col;
+	boolean canAdd;
+	
+	while (grid[r][c] == null || c < grid[r].length)
+		c ++;
+	if (c != grid[r].length)
+		canAdd = false;
+	else {
+		canAdd = true;
+	}
+	
+	if (canAdd)
+		for (int i = 0; i < grid[r].length; i ++) 
+			grid[r][i] = s[i];
+}
+	
   //fillGrid()
   public void fillGrid(){
   	for (int i = 0; i < grid.length; i++) {
