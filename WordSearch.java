@@ -5,12 +5,7 @@ import java.io.*;
 
 public class WordSearch{
   private char[][] grid;
-  private boolean up;
-  private boolean down;
-  private boolean left;
-  private boolean right;
   private ArrayList<String> wordList = new ArrayList<String>();
-  private int numWords;
   
   
   
@@ -176,17 +171,33 @@ public class WordSearch{
   //addWords
   public void addWords(int n) {
 	ArrayList<String> Words = new ArrayList();
+	WordSearch ws1 = new WordSearch();
 	Words = loadDictionary();
 	Random rand = new Random();
 	int m = 0;
 	int l = n;
 	
 	while (l > 0) {
-		wordList.get(m) = Words.remove(rand.nextInt(Words.size()));
+		wordList.set(m, Words.remove(rand.nextInt(Words.size())));
 		l --;
 		m ++;
 	}
+	l = n;
+	while (l > 0) {
+		if (rand.nextInt(3) == 0) {
+			ws1.addWordH(rand.nextInt(grid.length), rand.nextInt(grid[0].length), wordList.remove(rand.nextInt(wordList.size())));
+			l --;
+		}
+		else if (rand.nextInt(3) == 1) {
+			ws1.addWordV(rand.nextInt(grid.length), rand.nextInt(grid[0].length), wordList.remove(rand.nextInt(wordList.size())));
+			l --;
+		}
+		else{
+			ws1.addWordD(rand.nextInt(grid.length), rand.nextInt(grid[0].length), wordList.remove(rand.nextInt(wordList.size())));
+			l --;
+		}
   }
+}
 	
   //fillGrid()
   public void fillGrid(){
@@ -248,6 +259,9 @@ public class WordSearch{
         ws.addWordD(4, 4, "oats");
 		
         System.out.println(ws);
+
+	ws.addWords(3);
+	System.out.println(ws);
         
         ws.fillGrid();
         System.out.println(ws);
