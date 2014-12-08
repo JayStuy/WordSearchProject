@@ -51,7 +51,7 @@ public class WordSearch{
 			a += "\n";
 		}
 		for (int i = 0; i<wordList.size(); i++){
-			a+=wordList[i]+"/n";
+			a+=wordList.get(i)+"/n";
 		}
 	return a;
   }
