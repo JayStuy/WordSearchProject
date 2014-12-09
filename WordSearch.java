@@ -180,6 +180,10 @@ public class WordSearch{
 	Random rand = new Random();
 	int m = 0;
 	int l = n;
+
+	for (int i = 0; i < Words.size(); i ++) {
+		Words.set(i, (Words.get(i)).toUpperCase());
+	}
 	
 	while (l > 1) {
 		wordList.set(m, Words.remove(rand.nextInt(Words.size())));
@@ -263,6 +267,12 @@ public class WordSearch{
         ws.addWordD(4, 4, "oats");
 		
         System.out.println(ws.toString());
+	System.out.println(ws);
+
+	ws.addWords(4);
+	System.out.println(ws);
+	System.out.println(ws.toString());
+
 	System.out.println("\n \nAfter fillGrid()");
 	ws.fillGrid();
 	System.out.println(ws.toString());
@@ -270,7 +280,7 @@ public class WordSearch{
 	ws.addWords(3);
 	System.out.println(ws);
         
-        ws.fillGrid();
-        System.out.println(ws);
+ 	ws.fillGrid();
+ 	System.out.println(ws);
   }
 }
