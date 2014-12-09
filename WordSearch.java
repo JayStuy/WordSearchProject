@@ -50,7 +50,7 @@ public class WordSearch{
 			a += "\n";
 		}
 		for (int i = 0; i<wordList.size(); i++){
-			a+=wordList.get(i)+"/n";
+			a+=wordList.get(i)+"\n";
 		}
 	return a;
   }
@@ -86,7 +86,8 @@ public class WordSearch{
 		else if(grid[row][c] == s.charAt(i))
 			col ++;
 		}
-	
+	if (canAdd)
+	wordList.add(s);	
 	return canAdd;
 }
 
@@ -121,7 +122,8 @@ public class WordSearch{
 		else if(grid[row][c] == s.charAt(i))
 			row++;
 		}
-	
+	if (canAdd)
+	wordList.add(s);
 	return canAdd;
 }
 
@@ -165,6 +167,8 @@ public class WordSearch{
 			col ++;
 		}
 	}
+	if (canAdd)
+	wordList.add(s);
 	return canAdd;
   }
 
@@ -177,13 +181,13 @@ public class WordSearch{
 	int m = 0;
 	int l = n;
 	
-	while (l > 0) {
+	while (l > 1) {
 		wordList.set(m, Words.remove(rand.nextInt(Words.size())));
 		l --;
 		m ++;
 	}
 	l = n;
-	while (l > 0) {
+	while (l > 1) {
 		if (rand.nextInt(3) == 0) {
 			ws1.addWordH(rand.nextInt(grid.length), rand.nextInt(grid[0].length), wordList.remove(rand.nextInt(wordList.size())));
 			l --;
@@ -258,7 +262,10 @@ public class WordSearch{
         ws.addWordD(0, 4, "ores");
         ws.addWordD(4, 4, "oats");
 		
-        System.out.println(ws);
+        System.out.println(ws.toString());
+	System.out.println("\n \nAfter fillGrid()");
+	ws.fillGrid();
+	System.out.println(ws.toString());
 
 	ws.addWords(3);
 	System.out.println(ws);
